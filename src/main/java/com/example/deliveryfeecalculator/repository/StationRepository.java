@@ -4,5 +4,5 @@ import com.example.deliveryfeecalculator.model.Station;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StationRepository extends CrudRepository<Station, Long> {
-    Station findByCityName(String cityName);
+    Station findByCityNameIgnoreCase(String cityName);
 }
