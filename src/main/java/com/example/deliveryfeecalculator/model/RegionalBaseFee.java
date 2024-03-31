@@ -1,5 +1,6 @@
 package com.example.deliveryfeecalculator.model;
 
+import com.example.deliveryfeecalculator.id.RegionalBaseFeeId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -12,12 +13,12 @@ public class RegionalBaseFee {
     @ManyToOne
     private Station station;
     @Id
-    private Vehicle vehicle;
+    private VehicleType vehicleType;
     private double rbf;
 
-    public RegionalBaseFee(Station station, Vehicle vehicle, double rbf) {
+    public RegionalBaseFee(Station station, VehicleType vehicleType, double rbf) {
         this.station = station;
-        this.vehicle = vehicle;
+        this.vehicleType = vehicleType;
         this.rbf = rbf;
     }
 
@@ -25,7 +26,10 @@ public class RegionalBaseFee {
 
     }
 
-    public double getRbf() {
+    /**
+     * @return Regional base fee in euros that is specified in the database for given vehicle type and city.
+     */
+    public double getRegionalBaseFee() {
         return rbf;
     }
 }

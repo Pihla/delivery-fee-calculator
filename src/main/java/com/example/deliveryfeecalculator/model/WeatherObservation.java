@@ -17,7 +17,6 @@ public class WeatherObservation {
     private Long timestamp;
 
     public WeatherObservation(Station station, String wmoCode, String airTemperature, String windSpeed, String phenomenon_string, String timestamp) {
-        //TODO exceptions
         this.station = station;
         this.wmoCode = wmoCode;
         this.airTemperature = Double.parseDouble(airTemperature);
@@ -26,6 +25,11 @@ public class WeatherObservation {
         this.timestamp = Long.valueOf(timestamp);
     }
 
+    /**
+     * @return String representation of weather observation, including station, WMO code, air temperature, wind speed
+     * and weather phenomenon.
+     */
+    @Override
     public String toString() {
        return String.format("Observation with values: %s, wmo code: %s, air temperature: %s, wind speed: %s, " +
                 "weather phenomenon: %s", station, wmoCode, airTemperature, windSpeed, weatherPhenomenon);
@@ -39,14 +43,23 @@ public class WeatherObservation {
         return WeatherPhenomenon.valueOf(string.toUpperCase().replace(" ", "_"));
     }
 
+    /**
+     * @return Air temperature in °C.
+     */
     public double getAirTemperature() {
         return airTemperature;
     }
 
+    /**
+     * @return Average wind speed in m/s (meters per second).
+     */
     public double getWindSpeed() {
         return windSpeed;
     }
 
+    /**
+     * @return Enum representing the weather phenomenon.
+     */
     public WeatherPhenomenon getPhenomenon() {
         return weatherPhenomenon;
     }

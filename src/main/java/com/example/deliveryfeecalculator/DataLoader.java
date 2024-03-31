@@ -2,7 +2,7 @@ package com.example.deliveryfeecalculator;
 
 import com.example.deliveryfeecalculator.model.RegionalBaseFee;
 import com.example.deliveryfeecalculator.model.Station;
-import com.example.deliveryfeecalculator.model.Vehicle;
+import com.example.deliveryfeecalculator.model.VehicleType;
 import com.example.deliveryfeecalculator.repository.RegionalBaseFeeRepository;
 import com.example.deliveryfeecalculator.repository.StationRepository;
 import jakarta.transaction.Transactional;
@@ -20,9 +20,13 @@ public class DataLoader implements CommandLineRunner {
         this.regionalBaseFeeRepository = regionalBaseFeeRepository;
     }
 
+    /**
+     * Method initializes database with stations and regional base fees.
+     * @param args Arguments.
+     */
     @Override
     @Transactional
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         //generate stations
         Station tallinnStation = new Station("Tallinn", "Tallinn-Harku");
         Station tartuStation = new Station("Tartu", "Tartu-Tõravere");
@@ -34,17 +38,17 @@ public class DataLoader implements CommandLineRunner {
         stationRepository.save(parnuStation);
 
         //save regional base fees to db
-        regionalBaseFeeRepository.save(new RegionalBaseFee(tallinnStation, Vehicle.CAR, 4.0));
-        regionalBaseFeeRepository.save(new RegionalBaseFee(tallinnStation, Vehicle.SCOOTER, 3.5));
-        regionalBaseFeeRepository.save(new RegionalBaseFee(tallinnStation, Vehicle.BIKE, 3.0));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(tallinnStation, VehicleType.CAR, 4.0));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(tallinnStation, VehicleType.SCOOTER, 3.5));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(tallinnStation, VehicleType.BIKE, 3.0));
 
-        regionalBaseFeeRepository.save(new RegionalBaseFee(tartuStation, Vehicle.CAR, 3.5));
-        regionalBaseFeeRepository.save(new RegionalBaseFee(tartuStation, Vehicle.SCOOTER, 3.0));
-        regionalBaseFeeRepository.save(new RegionalBaseFee(tartuStation, Vehicle.BIKE, 2.5));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(tartuStation, VehicleType.CAR, 3.5));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(tartuStation, VehicleType.SCOOTER, 3.0));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(tartuStation, VehicleType.BIKE, 2.5));
 
-        regionalBaseFeeRepository.save(new RegionalBaseFee(parnuStation, Vehicle.CAR, 3.0));
-        regionalBaseFeeRepository.save(new RegionalBaseFee(parnuStation, Vehicle.SCOOTER, 2.5));
-        regionalBaseFeeRepository.save(new RegionalBaseFee(parnuStation, Vehicle.BIKE, 2.0));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(parnuStation, VehicleType.CAR, 3.0));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(parnuStation, VehicleType.SCOOTER, 2.5));
+        regionalBaseFeeRepository.save(new RegionalBaseFee(parnuStation, VehicleType.BIKE, 2.0));
 
     }
 }

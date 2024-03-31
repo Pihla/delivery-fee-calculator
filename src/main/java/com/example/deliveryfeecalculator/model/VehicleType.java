@@ -1,5 +1,5 @@
 package com.example.deliveryfeecalculator.model;
 
-public enum Vehicle {
+public enum VehicleType {
     CAR, SCOOTER, BIKE
 }

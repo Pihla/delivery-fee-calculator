@@ -7,5 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface WeatherObservationRepository extends CrudRepository<WeatherObservation, Long> {
 
+    /**
+     * @param station Weather station
+     * @return Latest weather observation in the given station.
+     */
     WeatherObservation findTop1ByStationOrderByTimestampDesc(Station station);
 }

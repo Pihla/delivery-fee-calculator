@@ -16,14 +16,17 @@ public class Station {
 
     }
 
-    public String getCityName() {
-        return cityName;
-    }
-
+    /**
+     * @return Name of the weather station
+     */
     public String getStationName() {
         return stationName;
     }
 
+    /**
+     * @return String representation of the station, including its name and the city it belongs to.
+     */
+    @Override
     public String toString() {
         return String.format("station %s in city %s", stationName, cityName);
     }
